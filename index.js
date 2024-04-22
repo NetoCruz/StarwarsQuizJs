@@ -65,7 +65,10 @@ document.body.appendChild(opt3)
         // document.getElementById('op2').innerHTML = item.option2;
         // document.getElementById('op3').innerHTML = item.option3;
 
-        
+    let option3 = document.getElementById('op3')
+option3.addEventListener('click',function(){
+    document.getElementById('scoreNum').innerHTML = "1";
+})    
    
 }
 
