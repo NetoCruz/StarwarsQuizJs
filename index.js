@@ -82,23 +82,33 @@ data[numQuestion].respuestas.map(item=>{
     opt1.setAttribute("id", item.id)
     opt1.innerHTML =item.content;
     document.body.appendChild(opt1)
+    isCorrect(item.respond,item.id)
     //opt1.setAttribute("tipo", item.respond)
     //isOk=item.respond
-  //console.log(isOk)
-    let option3 = document.getElementById(item.id)
-option3.addEventListener('click',function(){
-     if(item.respond=null){
-       document.getElementById('scoreNum').innerHTML = "1";  
-     } 
-    eraseQuestion()
-    myquiz(1)
-})  
+  //console.log(item.respond)
+//     let option3 = document.getElementById(item.id)
+// option3.addEventListener('click',function(){
+//     //  if(item.respond=null){
+//     //    document.getElementById('scoreNum').innerHTML = "1";  
+//     //  } 
+//      isCorrect(item.respond)
+//     eraseQuestion()
+//     myquiz(1)
+// })  
 })
 
-function isCorrect(){
-    if(isOk=true){
-        document.getElementById('scoreNum').innerHTML = "1";  
-    }
+function isCorrect(res,pos){
+   console.log(res)
+   let option3 = document.getElementById(pos)
+   option3.addEventListener('click',function(){
+        if(res=true){
+          document.getElementById('scoreNum').innerHTML = "1";  
+        } 
+       
+       eraseQuestion()
+       myquiz(1)
+   })  
+    
 }
 
 // const question = document.createElement("h4");
