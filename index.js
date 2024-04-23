@@ -82,8 +82,24 @@ data[numQuestion].respuestas.map(item=>{
     opt1.setAttribute("id", item.id)
     opt1.innerHTML =item.content;
     document.body.appendChild(opt1)
-    isOk=item.respond
+    //opt1.setAttribute("tipo", item.respond)
+    //isOk=item.respond
+  //console.log(isOk)
+    let option3 = document.getElementById(item.id)
+option3.addEventListener('click',function(){
+     if(item.respond=null){
+       document.getElementById('scoreNum').innerHTML = "1";  
+     } 
+    eraseQuestion()
+    myquiz(1)
+})  
 })
+
+function isCorrect(){
+    if(isOk=true){
+        document.getElementById('scoreNum').innerHTML = "1";  
+    }
+}
 
 // const question = document.createElement("h4");
 // question.setAttribute("id", "titleQ")
@@ -109,15 +125,15 @@ data[numQuestion].respuestas.map(item=>{
         // document.getElementById('op1').innerHTML = item.option1;
         
 
-    let option3 = document.getElementById('op3')
-option3.addEventListener('click',function(){
-    if(isOk=true){
-      document.getElementById('scoreNum').innerHTML = "1";  
-    } 
+//     let option3 = document.getElementById('op3')
+// option3.addEventListener('click',function(){
+//     if(isOk=true){
+//       document.getElementById('scoreNum').innerHTML = "1";  
+//     } 
     
-    eraseQuestion()
-    myquiz(1)
-})  
+//     eraseQuestion()
+//     myquiz(1)
+// })  
    
 }
 function eraseQuestion(){
