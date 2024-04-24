@@ -49,7 +49,7 @@ let startBtn = document.getElementById('start');
 let stopBtn = document.getElementById('stop'); 
 let resetBtn = document.getElementById('reset'); 
   
-let second = 60; 
+let second = 5; 
 let count = 0; 
   
 startBtn.addEventListener('click', function () { 
@@ -64,30 +64,31 @@ stopBtn.addEventListener('click', function () {
   
 resetBtn.addEventListener('click', function () { 
     timer = false;  
-    second = 60; 
+    second = 5; 
     count = 0; 
-    document.getElementById('sec').innerHTML = "60"; 
+    document.getElementById('sec').innerHTML = "05"; 
     document.getElementById('count').innerHTML = "00"; 
 }); 
 
 function myquiz(nextq){
      let numQuestion=nextq;
+     const container = document.querySelector(".container")
         const question = document.createElement("h4");
         question.setAttribute("id", "titleQ")
 question.innerHTML =data[numQuestion].quiz;
-document.body.appendChild(question)
+container.appendChild(question)
 
 data[numQuestion].respuestas.map(item=>{
     const opt1 = document.createElement("button");
     opt1.setAttribute("id", item.id)
     opt1.innerHTML =item.content;
-    document.body.appendChild(opt1)
+    container.appendChild(opt1)
     isCorrect(item.respond,item.id)
     opt1.setAttribute("tipo", item.respond)
 
     let option3 = document.getElementById(item.id)
     option3.addEventListener('click',function(){
-     isCorrect(item.respond)
+     //isCorrect(item.respond)
     eraseQuestion()
     myquiz(1)
 })  
@@ -102,8 +103,9 @@ function isCorrect(res,pos){
         } 
        
        eraseQuestion()
-       myquiz(1)
-   })  
+       nums=numQuestion++
+      myquiz(nums)
+   })
     
 }
 
@@ -122,7 +124,9 @@ const opt3 = document.getElementById("op3");
   opt3.remove()
 }
   
-  
+  function finishTime(){
+    alert('se acabó el tiempo')
+  }
   
 function stopWatch() { 
     if (timer) { 
@@ -136,7 +140,10 @@ function stopWatch() {
         let secString = second; 
         let countString = count; 
   
+       if(second==0){
+        timer=false
        
+       }
   
         if (second < 10) { 
             secString = "0" + secString; 
