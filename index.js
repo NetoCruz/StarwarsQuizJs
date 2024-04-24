@@ -69,7 +69,7 @@ resetBtn.addEventListener('click', function () {
     document.getElementById('sec').innerHTML = "60"; 
     document.getElementById('count').innerHTML = "00"; 
 }); 
-let isOk;
+
 function myquiz(nextq){
      let numQuestion=nextq;
         const question = document.createElement("h4");
@@ -83,25 +83,21 @@ data[numQuestion].respuestas.map(item=>{
     opt1.innerHTML =item.content;
     document.body.appendChild(opt1)
     isCorrect(item.respond,item.id)
-    //opt1.setAttribute("tipo", item.respond)
-    //isOk=item.respond
-  //console.log(item.respond)
-//     let option3 = document.getElementById(item.id)
-// option3.addEventListener('click',function(){
-//     //  if(item.respond=null){
-//     //    document.getElementById('scoreNum').innerHTML = "1";  
-//     //  } 
-//      isCorrect(item.respond)
-//     eraseQuestion()
-//     myquiz(1)
-// })  
+    opt1.setAttribute("tipo", item.respond)
+
+    let option3 = document.getElementById(item.id)
+    option3.addEventListener('click',function(){
+     isCorrect(item.respond)
+    eraseQuestion()
+    myquiz(1)
+})  
 })
 
 function isCorrect(res,pos){
-   console.log(res)
+   //console.log(pos)
    let option3 = document.getElementById(pos)
    option3.addEventListener('click',function(){
-        if(res=true){
+        if(res==true){
           document.getElementById('scoreNum').innerHTML = "1";  
         } 
        
@@ -111,40 +107,7 @@ function isCorrect(res,pos){
     
 }
 
-// const question = document.createElement("h4");
-// question.setAttribute("id", "titleQ")
-// question.innerHTML =data[numQuestion].quiz;
-// document.body.appendChild(question)
 
-// const opt1 = document.createElement("button");
-// opt1.setAttribute("id", "op1")
-// opt1.innerHTML =data[numQuestion].option1.content;
-// document.body.appendChild(opt1)
-
-// const opt2 = document.createElement("button");
-// opt2.setAttribute("id","op2")
-// opt2.innerHTML =data[numQuestion].option2.content;
-// document.body.appendChild(opt2)
-
-// const opt3 = document.createElement("button");
-// opt3.setAttribute("id","op3")
-// opt3.innerHTML =data[numQuestion].option3.content;
-// document.body.appendChild(opt3)
-
-        // document.getElementById('question').innerHTML = item.quiz;
-        // document.getElementById('op1').innerHTML = item.option1;
-        
-
-//     let option3 = document.getElementById('op3')
-// option3.addEventListener('click',function(){
-//     if(isOk=true){
-//       document.getElementById('scoreNum').innerHTML = "1";  
-//     } 
-    
-//     eraseQuestion()
-//     myquiz(1)
-// })  
-   
 }
 function eraseQuestion(){
     const question = document.getElementById("titleQ");
